@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "lmbai",
+      "authorEmail": "bailm1984@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}
