@@ -11,7 +11,7 @@ module.exports = class extends Generator {
     const prompts = [
       {
         type: 'confirm',
-        name: 'generate',
+        name: 'confirm',
         message: 'Would you like to generate a new project?',
         default: true
       }
@@ -24,12 +24,18 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(this.templatePath('.yo-rc.json'), this.destinationPath('.yo-rc.json'));
+    if (this.props.confirm === true) {
+      this.fs.copy(this.templatePath('.yo-rc.json'), this.destinationPath('.yo-rc.json'));
+    } else {
+      this.log(yosay(`${chalk.red('Bye Bye ')} (msg from lmbai)`));
+    }
   }
 
   install() {
     // This.installDependencies();
-    this.spawnCommand('jhipster', ['--force']);
+    if (this.props.confirm === true) {
+      this.spawnCommand('jhipster', ['--force']);
+    }
     // Now you can bind to the dependencies installed event
     // this.on('dependenciesInstalled', function() {
     //  this.spawnCommand('jhipster', ['--force']);
