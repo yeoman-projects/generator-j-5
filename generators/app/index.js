@@ -6,15 +6,13 @@ const yosay = require('yosay');
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
-    this.log(
-      yosay(`Welcome to the laudable ${chalk.red('generator-j-5')} generator!`)
-    );
+    this.log(yosay(`Welcome to the laudable ${chalk.red('generator-j-5')} generator!`));
 
     const prompts = [
       {
         type: 'confirm',
-        name: 'someAnswer',
-        message: 'Would you like to enable this option?',
+        name: 'generate',
+        message: 'Would you like to generate a new project?',
         default: true
       }
     ];
@@ -26,10 +24,7 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
+    this.fs.copy(this.templatePath(''), this.destinationPath(''));
   }
 
   install() {
