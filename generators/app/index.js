@@ -24,10 +24,15 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(this.templatePath(''), this.destinationPath(''));
+    this.fs.copy(this.templatePath('.yo-rc.json'), this.destinationPath('.yo-rc.json'));
   }
 
   install() {
-    this.installDependencies();
+    // This.installDependencies();
+    this.spawnCommand('jhipster', ['--force']);
+    // Now you can bind to the dependencies installed event
+    // this.on('dependenciesInstalled', function() {
+    //  this.spawnCommand('jhipster', ['--force']);
+    // });
   }
 };
